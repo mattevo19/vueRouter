@@ -1,9 +1,17 @@
+<script lang="ts" setup>
+import sourceDate from "@/data.json"
+const destinations = sourceDate.destinations
+</script>
+
 <template>
   <nav id="nav">
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/brazil">Brazil</RouterLink>
-    <RouterLink to="/hawaii">Hawaii</RouterLink>
-    <RouterLink to="/jamaica">Jamaica</RouterLink>
-    <RouterLink to="/panama">Panama</RouterLink>
+    <router-link id="logo" to="/">Travel App</router-link>
+    <router-link
+      v-for="destination in destinations"
+      :key="destination.id"
+      :to="{ name: 'destination.show', params: { id: destination.id, slug: destination.slug } }"
+    >
+      <h2>{{ destination.name }}</h2>
+    </router-link>
   </nav>
 </template>
