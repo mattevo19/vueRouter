@@ -11,7 +11,8 @@ const destinations = sourceDate.destinations
       :key="destination.id"
       :to="{ name: 'destination.show', params: { id: destination.id, slug: destination.slug } }"
     >
-      <h2>{{ destination.name }}</h2>
+      <h3>{{ destination.name }}</h3>
     </router-link>
+    <router-link :to="{ name: 'protected' }"><h3>Dashboard</h3></router-link>
   </nav>
 </template>

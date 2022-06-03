@@ -7,8 +7,22 @@ import NavComp from "./components/NavComp.vue"
 <template>
   <NavComp />
   <div class="container">
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" :key="$route.path"></component>
+      </transition>
+    </RouterView>
   </div>
 </template>
 
-<style></style>
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.6s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
